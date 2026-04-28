@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flowise Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Welcome to My Chatbot 🤖</h2>
+    <p>Ask anything below!</p>
+
+    <script type="module">
+        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+
+        Chatbot.init({
+            chatflowid: "2e5bd6c0-c43f-4d6e-b50c-c03e5f4c45ab",
+        })
+    </script>
+
+</body>
+</html>
