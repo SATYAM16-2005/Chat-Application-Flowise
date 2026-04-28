@@ -3,27 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flowise Chatbot</title>
+    <title>AI Chat Assistant</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .container {
             text-align: center;
-            margin-top: 50px;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: white;
+            color: #333;
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #f1f1f1;
+        }
+
+        .features {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 15px;
+            width: 200px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 0.8rem;
+            opacity: 0.7;
         }
     </style>
 </head>
+
 <body>
 
-    <h2>Welcome to My Chatbot 🤖</h2>
-    <p>Ask anything below!</p>
+<div class="container">
+    <h1>🤖 AI Chat Assistant</h1>
+    <p>Your smart assistant powered by Flowise AI</p>
 
-    <script type="module">
-        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    <button class="btn" onclick="openChat()">Start Chat</button>
 
-        Chatbot.init({
-            chatflowid: "2e5bd6c0-c43f-4d6e-b50c-c03e5f4c45ab",
-        })
-    </script>
+    <div class="features">
+        <div class="card">
+            <h3>⚡ Fast</h3>
+            <p>Instant AI responses</p>
+        </div>
+        <div class="card">
+            <h3>🧠 Smart</h3>
+            <p>Understands your queries</p>
+        </div>
+        <div class="card">
+            <h3>🌐 24/7</h3>
+            <p>Always available</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    Made with ❤️ using Flowise
+</footer>
+
+<!-- Chatbot Script -->
+<script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+
+    Chatbot.init({
+        chatflowid: "YOUR_FLOW_ID", // IMPORTANT
+        apiHost: "https://cloud.flowiseai.com",
+        theme: {
+            button: {
+                backgroundColor: "#ffffff",
+                right: 20,
+                bottom: 20,
+                size: 50,
+                iconColor: "#333"
+            },
+            chatWindow: {
+                welcomeMessage: "👋 Hello! How can I help you today?",
+                backgroundColor: "#ffffff",
+                height: 500,
+                width: 350,
+                textColor: "#333",
+                botMessage: {
+                    backgroundColor: "#f1f1f1",
+                    textColor: "#333"
+                },
+                userMessage: {
+                    backgroundColor: "#667eea",
+                    textColor: "#ffffff"
+                }
+            }
+        }
+    })
+
+    function openChat() {
+        document.querySelector("flowise-chatbot").shadowRoot.querySelector("button").click()
+    }
+</script>
 
 </body>
 </html>
